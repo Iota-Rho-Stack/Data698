@@ -1,0 +1,5 @@
+require(package = "datasets")
+require(package = "reticulate")
+virtualenv_create()
+use_virtualenv(virtualenv = "r-reticulate")
+virtualenv_install(packages = "scikit-learn")

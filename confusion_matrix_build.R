@@ -1,0 +1,31 @@
+require(e1071)
+require(caret)
+setNames(
+  list(
+    confusionMatrix(
+      as.factor(
+        as.vector(
+          source('/cloud/project/data_X_y_test.R')$value[[2]])),
+      as.factor(
+        source('/cloud/project/model_build.R')$value$logReg$predict(source('/cloud/project/data_X_y_test.R')$value[[1]]))),
+    confusionMatrix(
+      as.factor(
+        as.vector(
+          source('/cloud/project/data_X_y_test.R')$value[[2]])),
+      as.factor(
+        source('/cloud/project/model_build.R')$value$svc$predict(source('/cloud/project/data_X_y_test.R')$value[[1]]))),
+    confusionMatrix(
+      as.factor(
+        as.vector(
+          source('/cloud/project/data_X_y_test.R')$value[[2]])),
+      as.factor(
+        source('/cloud/project/model_build.R')$value$knn$predict(source('/cloud/project/data_X_y_test.R')$value[[1]]))),
+    confusionMatrix(
+      as.factor(
+        as.vector(
+          source('/cloud/project/data_X_y_test.R')$value[[2]])),
+      as.factor(
+        source('/cloud/project/model_build.R')$value$mlp$predict(source('/cloud/project/data_X_y_test.R')$value[[1]])))
+  ),
+  c("logreg","svc","knn","mlp")
+)
